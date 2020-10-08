@@ -6,7 +6,7 @@ Interface
 
 Uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls, ComCtrls,
-  StdCtrls, MPlayerCtrl, Process, types;
+  StdCtrls, MPlayerCtrl, Process, types, LazUTF8, LazFileUtils;
 
 Type
 
@@ -110,13 +110,17 @@ Begin
 
   // Have a go at finding where mplayer is installed
   If Not MPlayerControl1.FindMPlayerPath Then
+  begin
     MPlayerControl1.MPlayerPath :=
       IncludeTrailingBackslash(ExtractFileDir(Application.ExeName)) +
-      IncludeTrailingBackSlash('mplayer') + 'mplayer' + GetExeExt;
-
+      IncludeTrailingBackSlash('MPlayer') + 'mplayer' + GetExeExt;
+    memResults.Append(MPlayerControl1.MPlayerPath);
+    memResults.Append(boolTostr(FileExistsUTF8(MPlayerControl1.MPlayerPath)));
+  end;
   {$IFDEF Linux}
   MPlayerControl1.StartParam := '-vo x11 -zoom -fs';
   {$else $IFDEF Windows}
+
   MPlayerControl1.StartParam := '-vo direct3d -nofontconfig';
   {$ENDIF}
 
@@ -278,8 +282,8 @@ Begin
       If ActiveControl <> TrackBarPlaying Then
         TrackBarPlaying.Position := TrackBarPlaying.SelEnd;
 
-      lblPos.Caption := FormatDateTime('nnn:ss', APosition / (24 * 60 * 60)) +
-        ' / ' + FormatDateTime('nnn:ss', MPlayerControl1.Duration / (24 * 60 * 60));
+      lblPos.Caption := FormatDateTime('h:nnn:ss', APosition / (24 * 60 * 60)) +
+        ' / ' + FormatDateTime('h:nnn:ss', MPlayerControl1.Duration / (24 * 60 * 60));
 
       pnlPos.Width := lblPos.Width + 3;
     Finally

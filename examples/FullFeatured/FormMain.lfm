@@ -7,9 +7,10 @@ object frmMain: TfrmMain
   Caption = 'frmMain'
   ClientHeight = 569
   ClientWidth = 1252
+  DesignTimePPI = 101
   OnCreate = FormCreate
   OnMouseWheel = FormMouseWheel
-  LCLVersion = '1.2.4.0'
+  Visible = False
   object pnlVideo: TPanel
     Left = 642
     Height = 504
@@ -19,6 +20,7 @@ object frmMain: TfrmMain
     BevelOuter = bvNone
     ClientHeight = 504
     ClientWidth = 610
+    ParentFont = False
     TabOrder = 0
     object MPlayerControl1: TMPlayerControl
       Left = 0
@@ -45,6 +47,7 @@ object frmMain: TfrmMain
       BevelOuter = bvNone
       ClientHeight = 27
       ClientWidth = 610
+      ParentFont = False
       TabOrder = 1
       object pnlPos: TPanel
         Left = 504
@@ -55,6 +58,7 @@ object frmMain: TfrmMain
         BevelOuter = bvNone
         ClientHeight = 27
         ClientWidth = 106
+        ParentFont = False
         TabOrder = 0
         object lblPos: TLabel
           Left = 0
@@ -63,6 +67,7 @@ object frmMain: TfrmMain
           Width = 103
           Caption = 'mmm:ss / mmm:ss'
           ParentColor = False
+          ParentFont = False
         end
       end
       object TrackBarPlaying: TTrackBar
@@ -78,6 +83,7 @@ object frmMain: TfrmMain
         Align = alClient
         OnMouseDown = TrackBarPlayingMouseDown
         OnMouseUp = TrackBarPlayingMouseUp
+        ParentFont = False
         TabOrder = 1
       end
     end
@@ -97,6 +103,7 @@ object frmMain: TfrmMain
       TickStyle = tsNone
       Align = alRight
       Anchors = []
+      ParentFont = False
       TabOrder = 2
     end
   end
@@ -109,6 +116,7 @@ object frmMain: TfrmMain
     BevelOuter = bvNone
     ClientHeight = 504
     ClientWidth = 637
+    ParentFont = False
     TabOrder = 1
     object memResults: TMemo
       Left = 0
@@ -135,6 +143,7 @@ object frmMain: TfrmMain
       BevelOuter = bvNone
       ClientHeight = 46
       ClientWidth = 637
+      ParentFont = False
       TabOrder = 1
       object cboCommand: TComboBox
         Left = 272
@@ -148,6 +157,7 @@ object frmMain: TfrmMain
           ''
           ''
         )
+        ParentFont = False
         TabOrder = 0
         Text = '-help'
       end
@@ -159,6 +169,7 @@ object frmMain: TfrmMain
         Anchors = [akTop, akRight]
         Caption = 'Run Command'
         OnClick = btnRunCommandClick
+        ParentFont = False
         TabOrder = 1
       end
       object lblStartParams: TLabel
@@ -168,6 +179,7 @@ object frmMain: TfrmMain
         Width = 215
         Caption = 'Start Params (passed to mplayer on Play)'
         ParentColor = False
+        ParentFont = False
       end
       object cboStartParams: TComboBox
         Left = 6
@@ -181,6 +193,7 @@ object frmMain: TfrmMain
           '-vo direct3d'
           '-vf snapshot'
         )
+        ParentFont = False
         TabOrder = 2
         Text = '-vo direct3d'
       end
@@ -191,6 +204,7 @@ object frmMain: TfrmMain
         Width = 324
         Caption = 'Slave Command (if playing) / mplayer Params (if not playing)'
         ParentColor = False
+        ParentFont = False
       end
     end
   end
@@ -209,6 +223,7 @@ object frmMain: TfrmMain
     ButtonHeight = 40
     Caption = 'tbMain'
     Images = ilTools
+    ParentFont = False
     ShowCaptions = True
     TabOrder = 3
     object btnLoad: TToolButton
@@ -220,8 +235,8 @@ object frmMain: TfrmMain
     end
     object ToolButton2: TToolButton
       Left = 35
+      Height = 40
       Top = 2
-      Width = 5
       Caption = 'ToolButton2'
       Style = tbsDivider
     end
@@ -251,8 +266,8 @@ object frmMain: TfrmMain
     end
     object ToolButton6: TToolButton
       Left = 141
+      Height = 40
       Top = 2
-      Width = 5
       Caption = 'ToolButton6'
       Style = tbsDivider
     end
@@ -273,8 +288,8 @@ object frmMain: TfrmMain
     end
     object ToolButton9: TToolButton
       Left = 435
+      Height = 40
       Top = 2
-      Width = 5
       Caption = 'ToolButton9'
       Style = tbsDivider
     end
@@ -304,8 +319,8 @@ object frmMain: TfrmMain
     end
     object ToolButton4: TToolButton
       Left = 268
+      Height = 40
       Top = 2
-      Width = 5
       Caption = 'ToolButton4'
       Style = tbsDivider
     end
@@ -316,16 +331,17 @@ object frmMain: TfrmMain
     Top = 546
     Width = 1252
     Panels = <>
+    ParentFont = False
   end
   object OpenDialog1: TOpenDialog
     Filter = 'All Video|*.wmv;*.asf;*.avi;*.mpg;*.mpeg;*.divx;*.mp4;*.pkt|Microsoft Video|*.wmv;*.asf|Other Video|*.avi;*.mpg;*.mpeg;*.divx;*.mp4|NetMC Video|*.pkt|Text Files|*.txt|Microsoft Audio|*.wma|All Files|*.*'
     FilterIndex = 0
-    left = 40
-    top = 88
+    Left = 40
+    Top = 88
   end
   object ilTools: TImageList
-    left = 280
-    top = 88
+    Left = 280
+    Top = 88
     Bitmap = {
       4C69090000001000000010000000EBBA78CFEBBA78FFEBBA78FFEBBA78FFEBBA
       78FFEBBA78FFEBBA78FFEBBA78FFEBBA78FFEBBA78FFEBBA78FFEBBA78FFEBBA
@@ -622,7 +638,7 @@ object frmMain: TfrmMain
     Title = 'Locate mplayer.exe'
     Filter = 'mplayer.exe|mplayer.exe'
     Options = [ofPathMustExist, ofFileMustExist, ofEnableSizing]
-    left = 175
-    top = 183
+    Left = 175
+    Top = 183
   end
 end

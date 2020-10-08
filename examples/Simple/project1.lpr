@@ -9,7 +9,9 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, Unit1;
 
-{$IFDEF WINDOWS}{$R project1.rc}{$ENDIF}
+{$IFDEF WINDOWS}
+//{$R project1.rc}
+{$ENDIF}
 
 {$R *.res}
 

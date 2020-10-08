@@ -5,7 +5,7 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, LResources, Forms, Controls, Graphics, Dialogs,
+  Classes, SysUtils, FileUtil,LazFileUtils,LazUTF8, LResources, Forms, Controls, Graphics, Dialogs,
   Buttons, ComCtrls, ExtCtrls, MPlayerCtrl;
 
 type

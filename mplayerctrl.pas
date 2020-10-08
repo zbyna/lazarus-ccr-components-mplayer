@@ -287,8 +287,14 @@ var
   sProperty: string;
   iError: Integer;
   bPostOnPlay, bPostOnStop, bPostOnPlaying: boolean;
+  decimalSeparatorBackup : Char = ' ';
 
 begin
+  if FormatSettings.DecimalSeparator <> '.' then
+   begin
+     decimalSeparatorBackup := FormatSettings.DecimalSeparator;
+     FormatSettings.DecimalSeparator:= '.';
+   end;
   bPostOnPlay:=False;
   bPostOnStop:=False;
   bPostOnPlaying:=False;
@@ -432,6 +438,8 @@ begin
 
   If (not Running) Or bPostOnStop Then
     Stop;
+  if decimalSeparatorBackup <> ' ' then
+    FormatSettings.DecimalSeparator:= decimalSeparatorBackup;
 end;
 
 procedure TCustomMPlayerControl.WMPaint(var Message: TLMPaint);

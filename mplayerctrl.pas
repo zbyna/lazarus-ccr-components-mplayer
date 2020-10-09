@@ -450,7 +450,7 @@ begin
     with FCanvas do begin
       if Message.DC <> 0 then
         Handle := Message.DC;
-      Brush.Color:=clLtGray;
+      Brush.Color:=clDefault;
       Pen.Color:=clRed;
       Rectangle(0,0,Self.Width-1,Self.Height-1);
       MoveTo(0,0);
@@ -748,7 +748,7 @@ begin
     begin
       if DC <> 0 then
         Handle := DC;
-      Brush.Color := clLtGray;
+      Brush.Color := clDefault;
       Rectangle(0, 0, Self.Width, Self.Height);
       if DC <> 0 then
         Handle := 0;

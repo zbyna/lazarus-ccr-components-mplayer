@@ -227,6 +227,7 @@ type
     property OnConstrainedResize;
     property OnResize;
     property OnClick;
+    property PopupMenu;
     property OnMouseUp;
     property OnMouseDown;
     property OnMouseWheel;

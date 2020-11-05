@@ -1,0 +1,2 @@
+1. mPlayer executable + other stuff needed in directory: MPlayer
+2. video file named sample-mp4-file.mp4 needed in directory: video_example

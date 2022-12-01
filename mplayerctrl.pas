@@ -157,6 +157,7 @@ type
     FOutList: TStringList;
     FVideoInfo: TVideoInfo;
     FAudioInfo: TAudioInfo;
+    FBackImage: TPicture;
     function GetPosition: single;
     function GetRate: single;
     procedure SetImagePath(AValue: string);
@@ -207,6 +208,8 @@ type
     property VideoInfo: TVideoInfo read FVideoInfo; // this isn't fully populated until OnPlay recieved
     property AudioInfo: TAudioInfo read FAudioInfo; // this isn't fully populated until OnPlay received
 
+    property BackImage :TPicture   read FBackImage write FBackImage;
+
     property OnFeedback: TOnFeedback read FOnFeedback write FOnFeedback;
     property OnError: TOnError read FOnError write FOnError;
     property OnPlaying: TOnPlaying read FOnPlaying write FOnPlaying;
@@ -223,6 +226,7 @@ type
     property Enabled;
     property Filename;
     property Loop;
+    property BackImage;
     property OnChangeBounds;
     property OnConstrainedResize;
     property OnResize;
@@ -452,7 +456,7 @@ begin
       if Message.DC <> 0 then
         Handle := Message.DC;
       Brush.Color:=clDefault;
-      Pen.Color:=clRed;
+      Pen.Color:=cl3DShadow;
       Rectangle(0,0,Self.Width-1,Self.Height-1);
       MoveTo(0,0);
       LineTo(Self.Width,Self.Height);
@@ -554,11 +558,14 @@ begin
   FTimer.Enabled := False;
   FTimer.Interval := 250;
   FTimer.OnTimer := @TimerEvent;
+  BackImage := TPicture.Create;
+  //BackImage.LoadFromFile('splash_logo.png');
 end;
 
 destructor TCustomMPlayerControl.Destroy;
 begin
   Stop;
+  FBackImage.Free;
   FreeAndNil(FCanvas);
   FreeAndNil(FTimer);
   FreeAndNil(FOutList);
@@ -751,6 +758,7 @@ begin
         Handle := DC;
       Brush.Color := clDefault;
       Rectangle(0, 0, Self.Width, Self.Height);
+      FCanvas.StretchDraw(TRect.Create(0,0,self.Width,self.Height), FBackImage.Graphic);
       if DC <> 0 then
         Handle := 0;
     end;
